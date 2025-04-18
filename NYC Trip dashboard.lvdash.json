@@ -1,0 +1,141 @@
+{
+  "datasets" : [ {
+    "name" : "5e82a11d",
+    "displayName" : "trips",
+    "query" : "SELECT *,\r\ntimestampdiff(MINUTE, tpep_pickup_datetime, tpep_dropoff_datetime) as trip_duration_min\r\n FROM samples.nyctaxi.trips"
+  } ],
+  "pages" : [ {
+    "name" : "7e43a14b",
+    "displayName" : "Sample",
+    "layout" : [ {
+      "widget" : {
+        "name" : "c978497b",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "5e82a11d",
+            "fields" : [ {
+              "name" : "daily(tpep_pickup_datetime)",
+              "expression" : "DATE_TRUNC(\"DAY\", `tpep_pickup_datetime`)"
+            }, {
+              "name" : "sum(trip_distance)",
+              "expression" : "SUM(`trip_distance`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "daily(tpep_pickup_datetime)",
+              "scale" : {
+                "type" : "temporal"
+              },
+              "displayName" : "tpep_pickup_datetime"
+            },
+            "y" : {
+              "fieldName" : "sum(trip_distance)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Sum of trip_distance"
+            },
+            "label" : {
+              "show" : false
+            }
+          },
+          "frame" : {
+            "title" : "Daily Trip Distance",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 2,
+        "width" : 5,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "4250db13",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "5e82a11d",
+            "fields" : [ {
+              "name" : "daily(tpep_pickup_datetime)",
+              "expression" : "DATE_TRUNC(\"DAY\", `tpep_pickup_datetime`)"
+            }, {
+              "name" : "avg(trip_duration_min)",
+              "expression" : "AVG(`trip_duration_min`)"
+            }, {
+              "name" : "sum(trip_distance)",
+              "expression" : "SUM(`trip_distance`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "line",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "daily(tpep_pickup_datetime)",
+              "scale" : {
+                "type" : "temporal"
+              },
+              "displayName" : "tpep_pickup_datetime"
+            },
+            "y" : {
+              "primary" : {
+                "fields" : [ {
+                  "fieldName" : "avg(trip_duration_min)",
+                  "displayName" : "Average trip_duration_min"
+                } ],
+                "scale" : {
+                  "type" : "quantitative"
+                }
+              },
+              "secondary" : {
+                "fields" : [ {
+                  "fieldName" : "sum(trip_distance)",
+                  "displayName" : "Sum of trip_distance"
+                } ],
+                "scale" : {
+                  "type" : "quantitative"
+                }
+              }
+            }
+          },
+          "frame" : {
+            "title" : "Average trip_duration per day",
+            "showTitle" : true
+          },
+          "mark" : {
+            "colors" : [ "#1c67e8", "#ff002a", "#00A972", "#FF3621", "#8BCAE7", "#AB4057", "#99DDB4", "#FCA4A1", "#919191", "#BF7080" ]
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 8,
+        "width" : 5,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "5492b4c9",
+        "textbox_spec" : ""
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 6,
+        "height" : 2
+      }
+    } ]
+  } ]
+}
