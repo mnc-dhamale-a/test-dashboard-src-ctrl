@@ -136,6 +136,54 @@
         "width" : 6,
         "height" : 2
       }
+    }, {
+      "widget" : {
+        "name" : "c83a3019",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "5e82a11d",
+            "fields" : [ {
+              "name" : "pickup_zip",
+              "expression" : "`pickup_zip`"
+            }, {
+              "name" : "avg(fare_amount)",
+              "expression" : "AVG(`fare_amount`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "pickup_zip",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "displayName" : "pickup_zip"
+            },
+            "y" : {
+              "fieldName" : "avg(fare_amount)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Average fare_amount"
+            }
+          },
+          "frame" : {
+            "title" : "Fare Amount by Pickup Zip (Random graph)",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 14,
+        "width" : 5,
+        "height" : 6
+      }
     } ]
   } ]
 }
