@@ -174,7 +174,9 @@
           },
           "frame" : {
             "title" : "Fare Amount by Pickup Zip (Random graph)",
-            "showTitle" : true
+            "showTitle" : true,
+            "showDescription" : true,
+            "description" : "Added description"
           }
         }
       },
